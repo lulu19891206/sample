@@ -8615,3 +8615,11 @@ input {
   margin-top: 50px;
 }
 
+#logout {
+  cursor: default;
+}
+
+#logout:hover {
+  background-color: transparent;
+}
+

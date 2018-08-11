@@ -1,5 +1,6 @@
 <?php
-$db_config = get_db_config();
+
+//$db_config = get_db_config();
 
 return [
 
@@ -57,11 +58,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $db_config['host'] /*env('DB_HOST', '127.0.0.1')*/,
+            'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => $db_config['database'] /*env('DB_DATABASE', 'forge')*/,
-            'username' => $db_config['username'] /*env('DB_USERNAME', 'forge')*/,
-            'password' => $db_config['password'] /*env('DB_PASSWORD', '')*/,
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
