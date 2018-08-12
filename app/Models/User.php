@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;//消息通知
 use Illuminate\Foundation\Auth\User as Authenticatable;//授权
+use App\Notifications\ResetPassword;
 
 class User extends Authenticatable
 {
@@ -29,10 +30,27 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public static function boot()
+    {
+        # code...
+        parent::boot();
+
+        static::creating(function($user)
+        {
+            # code...
+            $user->activation_token = str_random(30);
+        });
+    }
+
     public function gravatar($size='100')
     {
         # code...
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return "http://www.gravatar.com/avatar/$hash?s=$size";
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 }
