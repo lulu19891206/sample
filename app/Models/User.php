@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;//消息通知
 use Illuminate\Foundation\Auth\User as Authenticatable;//授权
 use App\Notifications\ResetPassword;
+use Auth;
 
 class User extends Authenticatable
 {
